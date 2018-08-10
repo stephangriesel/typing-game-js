@@ -24,5 +24,13 @@ const words = [
 // Start Challenge
 
 function init() {
-    console.log('init');
+     displayWord(words);
+}
+
+// Random word
+function displayWord(words) {
+    // Random Array index
+    const randomWord = Math.floor(Math.random() * words.length);
+    // Random word output
+    currentWord.innerHTML = words[randomWord];
 }
