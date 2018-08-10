@@ -24,7 +24,10 @@ const words = [
 // Start Challenge
 
 function init() {
+    // Choose word from array
      displayWord(words);
+     // Countdown
+     setInterval(countdown, 1000);
 }
 
 // Random word
@@ -33,4 +36,19 @@ function displayWord(words) {
     const randomWord = Math.floor(Math.random() * words.length);
     // Random word output
     currentWord.innerHTML = words[randomWord];
+}
+
+// Countdown 
+function countdown() {
+    // Infinite time
+    if(time > 0) {
+         // Decrease
+         time--;
+    } else if (time === 0){
+        // Game over
+        isPlaying = false;
+    }
+
+    // Time display 
+    timeDisplay.innerHTML = time;
 }
