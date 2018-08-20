@@ -26,10 +26,30 @@ const words = [
 function init() {
     // Choose word from array
      displayWord(words);
+     // Input compare 
+     wordInput.addEventListener('input', compareWord);
      // Countdown
      setInterval(countdown, 1000);
      // Is game running?
      setInterval(gameRunning, 1000);
+}
+
+// Compare Word 
+function compareWord() {
+    if(wordCompare()) {
+        console.log("TEST");
+    }
+}
+
+// Input  & Word compare 
+function wordCompare() {
+    if(wordInput.value === currentWord.innerHTML) {
+        message.innerHTML = "You got it";
+        return true;
+    } else {
+        message.innerHTML = "";
+        return false;
+    }
 }
 
 // Random word
