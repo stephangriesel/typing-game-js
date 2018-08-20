@@ -28,6 +28,8 @@ function init() {
      displayWord(words);
      // Countdown
      setInterval(countdown, 1000);
+     // Is game running?
+     setInterval(gameRunning, 1000);
 }
 
 // Random word
@@ -52,3 +54,10 @@ function countdown() {
     // Time display 
     timeDisplay.innerHTML = time;
 }
+
+// Is game running?
+function gameRunning() {
+    if(!isPlaying && time === 0) {
+        message.innerHTML = 'You have run out of time!';
+    }
+};
