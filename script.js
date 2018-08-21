@@ -6,6 +6,17 @@ let time = 10;
 let score = 0;
 let activeUser;
 
+// Difficulty 
+const difficulty = {
+    easy:10,
+    medium:5,
+    hard:2
+}
+
+// Change diffucluty 
+const currentDifficulty = difficulty.easy;
+
+
 // DOM elements
 
 const wordInput = document.querySelector('#word-input');
@@ -24,6 +35,8 @@ const words = [
 // Start Challenge
 
 function init() {
+    // Display seconds left 
+    seconds.innerHTML = currentDifficulty;
     // Choose word from array
      displayWord(words);
      // Input compare 
@@ -37,14 +50,26 @@ function init() {
 // Compare Word 
 function compareWord() {
     if(wordCompare()) {
-        console.log("TEST");
+        isPlaying = true;
+        time = difficulty + 1;
+        wordCompare(words);
+        wordInput.value = "";
+        score++;
+        }
+
+    // Score negative show zero
+    if(score === -1){
+        scoreDisplay.innerHTML = 0;
+    } else {
+        scoreDisplay.innerHTML = score;
     }
+    
 }
 
-// Input  & Word compare 
+// Input Word compare 
 function wordCompare() {
     if(wordInput.value === currentWord.innerHTML) {
-        message.innerHTML = "You got it";
+        message.innerHTML = "You got it!! Well done!!!";
         return true;
     } else {
         message.innerHTML = "";
@@ -79,5 +104,6 @@ function countdown() {
 function gameRunning() {
     if(!isPlaying && time === 0) {
         message.innerHTML = 'You have run out of time!';
+        score = -1;
     }
-};
+}
